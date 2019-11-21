@@ -10,12 +10,12 @@ use Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\Related;
 use Magento\Ui\Component\Form\Fieldset;
 
 /**
- * Class Accessory
+ * Class Sparepart
  * @package MagePal\LinkProduct\Ui\DataProvider\Product\Form\Modifier
  */
-class Accessory extends Related
+class Sparepart extends Related
 {
-    const DATA_SCOPE_ACCESSORY = 'accessory';
+    const DATA_SCOPE_SPAREPART = 'sparepart';
     /**
      * @var string
      */
@@ -34,12 +34,12 @@ class Accessory extends Related
             [
                 static::GROUP_RELATED => [
                     'children' => [
-                        $this->scopePrefix . static::DATA_SCOPE_ACCESSORY => $this->getAccessoryFieldset()
+                        $this->scopePrefix . static::DATA_SCOPE_SPAREPART => $this->getSparepartFieldset()
                     ],
                     'arguments' => [
                         'data' => [
                             'config' => [
-                                'label' => __('Related Products, Up-Sells, Cross-Sells and Accessory'),
+                                'label' => __('Related Products, Up-Sells, Cross-Sells and Spare-Parts'),
                                 'collapsible' => true,
                                 'componentType' => Fieldset::NAME,
                                 'dataScope' => static::DATA_SCOPE,
@@ -61,7 +61,7 @@ class Accessory extends Related
      *
      * @return array
      */
-    protected function getAccessoryFieldset()
+    protected function getSparepartFieldset()
     {
         $content = __(
             'Custom type products are shown to customers in addition to the item the customer is looking at.'
@@ -70,20 +70,20 @@ class Accessory extends Related
             'children' => [
                 'button_set' => $this->getButtonSet(
                     $content,
-                    __('Add Accessory Products'),
-                    $this->scopePrefix . static::DATA_SCOPE_ACCESSORY
+                    __('Add Spare-Part Products'),
+                    $this->scopePrefix . static::DATA_SCOPE_SPAREPART
                 ),
                 'modal' => $this->getGenericModal(
-                    __('Add Accessory Products'),
-                    $this->scopePrefix . static::DATA_SCOPE_ACCESSORY
+                    __('Add Spare-Part Products'),
+                    $this->scopePrefix . static::DATA_SCOPE_SPAREPART
                 ),
-                static::DATA_SCOPE_ACCESSORY => $this->getGrid($this->scopePrefix . static::DATA_SCOPE_ACCESSORY),
+                static::DATA_SCOPE_SPAREPART => $this->getGrid($this->scopePrefix . static::DATA_SCOPE_SPAREPART),
             ],
             'arguments' => [
                 'data' => [
                     'config' => [
                         'additionalClasses' => 'admin__fieldset-section',
-                        'label' => __('Accessory Products'),
+                        'label' => __('Spare-Part Products'),
                         'collapsible' => false,
                         'componentType' => Fieldset::NAME,
                         'dataScope' => '',
@@ -101,7 +101,7 @@ class Accessory extends Related
     protected function getDataScopes()
     {
         return [
-            static::DATA_SCOPE_ACCESSORY
+            static::DATA_SCOPE_SPAREPART
         ];
     }
 }

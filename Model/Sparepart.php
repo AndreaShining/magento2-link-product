@@ -12,10 +12,10 @@ use Magento\Framework\DataObject;
 use MagePal\LinkProduct\Model\Product\Link;
 
 /**
- * Class Accessory
+ * Class Sparepart
  * @package MagePal\LinkProduct\Model
  */
-class Accessory extends DataObject
+class Sparepart extends DataObject
 {
     /**
      * Product link instance
@@ -25,7 +25,7 @@ class Accessory extends DataObject
     protected $linkInstance;
 
     /**
-     * Accessory constructor.
+     * Sparepart constructor.
      * @param Link $productLink
      */
     public function __construct(
@@ -45,64 +45,64 @@ class Accessory extends DataObject
     }
 
     /**
-     * Retrieve array of Accessory products
+     * Retrieve array of Sparepart products
      *
      * @param Product $currentProduct
      * @return array
      */
-    public function getAccessoryProducts(Product $currentProduct)
+    public function getSparepartProducts(Product $currentProduct)
     {
-        if (!$this->hasAccessoryProducts()) {
+        //if (!$this->hasSparepartProducts()) {
             $products = [];
-            $collection = $this->getAccessoryProductCollection($currentProduct);
+            $collection = $this->getSparepartProductCollection($currentProduct);
             foreach ($collection as $product) {
                 $products[] = $product;
             }
-            $this->setAccessoryProducts($products);
-        }
-        return $this->getData('accessory_products');
+            $this->setSparepartProducts($products);
+        //}
+        return $this->getData('sparepart_products');
     }
 
     /**
-     * Retrieve accessory products identifiers
+     * Retrieve sparepart products identifiers
      *
      * @param Product $currentProduct
      * @return array
      */
-    public function getAccessoryProductIds(Product $currentProduct)
+    public function getSparepartProductIds(Product $currentProduct)
     {
-        if (!$this->hasAccessoryProductIds()) {
+        //if (!$this->hasSparepartProductIds()) {
             $ids = [];
-            foreach ($this->getAccessoryProducts($currentProduct) as $product) {
+            foreach ($this->getSparepartProducts($currentProduct) as $product) {
                 $ids[] = $product->getId();
             }
-            $this->setAccessoryProductIds($ids);
-        }
-        return $this->getData('accessory_product_ids');
+            $this->setSparepartProductIds($ids);
+        //}
+        return $this->getData('sparepart_product_ids');
     }
 
     /**
-     * Retrieve collection accessory product
+     * Retrieve collection sparepart product
      *
      * @param Product $currentProduct
      * @return \Magento\Catalog\Model\ResourceModel\Product\Link\Product\Collection
      */
-    public function getAccessoryProductCollection(Product $currentProduct)
+    public function getSparepartProductCollection(Product $currentProduct)
     {
-        $collection = $this->getLinkInstance()->useAccessoryLinks()->getProductCollection()->setIsStrongMode();
+        $collection = $this->getLinkInstance()->useSparepartLinks()->getProductCollection()->setIsStrongMode();
         $collection->setProduct($currentProduct);
         return $collection;
     }
 
     /**
-     * Retrieve collection accessory link
+     * Retrieve collection sparepart link
      *
      * @param Product $currentProduct
      * @return Collection
      */
-    public function getAccessoryLinkCollection(Product $currentProduct)
+    public function getSparepartLinkCollection(Product $currentProduct)
     {
-        $collection = $this->getLinkInstance()->useAccessoryLinks()->getLinkCollection();
+        $collection = $this->getLinkInstance()->useSparepartLinks()->getLinkCollection();
         $collection->setProduct($currentProduct);
         $collection->addLinkTypeIdFilter();
         $collection->addProductIdFilter();

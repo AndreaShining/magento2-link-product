@@ -11,10 +11,10 @@ use Magento\Catalog\Model\Product\CopyConstructorInterface;
 use Magento\Catalog\Model\Product\Link;
 
 /**
- * Class Accessory
+ * Class Sparepart
  * @package MagePal\LinkProduct\Model\Product\CopyConstructor
  */
-class Accessory implements CopyConstructorInterface
+class Sparepart implements CopyConstructorInterface
 {
     /**
      * Build product links
@@ -29,17 +29,17 @@ class Accessory implements CopyConstructorInterface
         $attributes = [];
 
         $link = $product->getLinkInstance();
-        $link->useAccessoryLinks();
+        $link->useSparepartLinks();
         foreach ($link->getAttributes() as $attribute) {
             if (isset($attribute['code'])) {
                 $attributes[] = $attribute['code'];
             }
         }
         /** @var Link $link  */
-        foreach ($product->getAccessoryLinkCollection() as $link) {
+        foreach ($product->getSparepartLinkCollection() as $link) {
             $data[$link->getLinkedProductId()] = $link->toArray($attributes);
         }
 
-        $duplicate->setAccessoryLinkData($data);
+        $duplicate->setSparepartLinkData($data);
     }
 }

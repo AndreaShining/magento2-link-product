@@ -12,14 +12,14 @@ namespace MagePal\LinkProduct\Model\Product;
  */
 class Link extends \Magento\Catalog\Model\Product\Link
 {
-    const LINK_TYPE_ACCESSORY = 7;
+    const LINK_TYPE_SPAREPART = 7;
 
     /**
      * @return $this
      */
-    public function useAccessoryLinks()
+    public function useSparepartLinks()
     {
-        $this->setLinkTypeId(self::LINK_TYPE_ACCESSORY);
+        $this->setLinkTypeId(self::LINK_TYPE_SPAREPART);
         return $this;
     }
 }

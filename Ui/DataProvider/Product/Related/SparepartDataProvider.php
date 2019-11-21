@@ -9,16 +9,16 @@ namespace MagePal\LinkProduct\Ui\DataProvider\Product\Related;
 use Magento\Catalog\Ui\DataProvider\Product\Related\AbstractDataProvider;
 
 /**
- * Class AccessoryDataProvider
+ * Class SparepartDataProvider
  * @package MagePal\LinkProduct\Ui\DataProvider\Product\Related
  */
-class AccessoryDataProvider extends AbstractDataProvider
+class SparepartDataProvider extends AbstractDataProvider
 {
     /**
      * {@inheritdoc
      */
     protected function getLinkType()
     {
-        return 'accessory';
+        return 'sparepart';
     }
 }

@@ -10,22 +10,22 @@ use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\ProductLink\CollectionProviderInterface;
 
 /**
- * Class Accessory
+ * Class Sparepart
  * @package MagePal\LinkProduct\Model\ProductLink\CollectionProvider
  */
-class Accessory implements CollectionProviderInterface
+class Sparepart implements CollectionProviderInterface
 {
-    /** @var \MagePal\LinkProduct\Model\Accessory */
-    protected $accessoryModel;
+    /** @var \MagePal\LinkProduct\Model\Sparepart */
+    protected $sparepartModel;
 
     /**
-     * Accessory constructor.
-     * @param \MagePal\LinkProduct\Model\Accessory $accessoryModel
+     * Sparepart constructor.
+     * @param \MagePal\LinkProduct\Model\Sparepart $sparepartModel
      */
     public function __construct(
-        \MagePal\LinkProduct\Model\Accessory $accessoryModel
+        \MagePal\LinkProduct\Model\Sparepart $sparepartModel
     ) {
-        $this->accessoryModel = $accessoryModel;
+        $this->sparepartModel = $sparepartModel;
     }
 
     /**
@@ -33,6 +33,6 @@ class Accessory implements CollectionProviderInterface
      */
     public function getLinkedProducts(Product $product)
     {
-        return (array) $this->accessoryModel->getAccessoryProducts($product);
+        return (array) $this->sparepartModel->getSparepartProducts($product);
     }
 }
